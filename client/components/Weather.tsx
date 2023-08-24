@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 import { getWeather } from '../apiClient.ts'
 
 export default function Weather({ city }) {
-  // const [weather, setWeather] = etc
-  // useEffect(), try catch
   return (
     <>
       <h2>Name: {city.city_name}</h2>

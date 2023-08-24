@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { getWeather } from '../apiClient.ts'
-// import Navbar from './Navbar.tsx'
 import SearchBar from './SearchBar.tsx'
-// import Cocktail from './Cocktail.tsx'
 import Weather from './Weather.tsx'
+// import Navbar from './Navbar.tsx'
+// import Cocktail from './Cocktail.tsx'
 
 import { Weather as WeatherType } from '../../models/weather.ts'
 
@@ -35,9 +35,6 @@ const emptyCity = {
 
 function App() {
   // const [welcomeStatement, setWelcomeStatement] = useState('')
-  // const [cocktail, setCocktail] = useState('')
-  const [city, setCity] = useState<WeatherType>(emptyCity)
-  const [searchText, setSearchText] = useState('')
 
   // useEffect(() => {
   //   getWelcome()
@@ -48,6 +45,10 @@ function App() {
   //       console.error(err.message)
   //     })
   // })
+
+  const [city, setCity] = useState<WeatherType>(emptyCity)
+  const [searchText, setSearchText] = useState('')
+  // const [cocktail, setCocktail] = useState('')
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
