@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
 import { getWeather } from '../apiClient.ts'
-import Navbar from './Navbar.tsx'
+// import Navbar from './Navbar.tsx'
 import SearchBar from './SearchBar.tsx'
-import Cocktail from './Cocktail.tsx'
+// import Cocktail from './Cocktail.tsx'
 import Weather from './Weather.tsx'
 
-import {
-  Weather as WeatherType,
-  WeatherWithName,
-} from '../../models/weather.ts'
+import { Weather as WeatherType } from '../../models/weather.ts'
 
 // import Weather from './Weather.tsx'
 const dumbyCity = {
@@ -39,7 +36,7 @@ const emptyCity = {
 function App() {
   // const [welcomeStatement, setWelcomeStatement] = useState('')
   // const [cocktail, setCocktail] = useState('')
-  const [city, setCity] = useState<WeatherWithName>(emptyCity)
+  const [city, setCity] = useState<WeatherType>(emptyCity)
   const [searchText, setSearchText] = useState('')
 
   // useEffect(() => {
@@ -56,10 +53,8 @@ function App() {
     event.preventDefault()
     //const weather = getWeather(searchText)
     setCity({ ...dumbyCity, city_name: searchText })
-    // const weather = getWeather(searchText)
-    // setCity(weather)
     // const cocktail = getCocktail(weather.id)
-    setSearchText('')
+    // getCocktail(id)...
   }
 
   return (
