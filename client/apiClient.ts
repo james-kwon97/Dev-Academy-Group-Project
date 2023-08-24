@@ -1,5 +1,6 @@
 import request from 'superagent'
-import { Weather } from '../models/welcome.ts'
+
+import { Weather } from '../models/weather.ts'
 
 const serverURL = '/api/v1/cloudy'
 
