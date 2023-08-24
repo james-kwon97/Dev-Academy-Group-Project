@@ -1,11 +1,12 @@
 import request from 'superagent'
-import { Welcome } from '../models/welcome.ts'
+import { Weather } from '../models/welcome.ts'
 
-const serverURL = '/api/v1'
+const serverURL = '/api/v1/cloudy'
 
 // *** EXAMPLE ***
-export function getWeather(): Promise<Weather> {
-  return request.get(`${serverURL}/welcome`).then((response) => response.body)
+export async function getWeather(city: string): Promise<Weather> {
+  const response = await request.get(`${serverURL}/weather/${city}`)
+  return response.body
 }
 
 // direct get route for cocktail api
