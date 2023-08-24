@@ -50,10 +50,11 @@ function App() {
   const [searchText, setSearchText] = useState('')
   // const [cocktail, setCocktail] = useState('')
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    //const weather = getWeather(searchText)
-    setCity({ ...dumbyCity, city_name: searchText })
+    const weatherData = await getWeather(searchText)
+    console.log(weatherData)
+    setCity({ ...weatherData, city_name: searchText })
     // const cocktail = getCocktail(weather.id)
     // getCocktail(id)...
   }

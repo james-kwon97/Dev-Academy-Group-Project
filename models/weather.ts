@@ -1,4 +1,5 @@
 export interface Weather {
+  cloud_pct?: number
   city_name?: string
   temp: number
   feels_like: number
