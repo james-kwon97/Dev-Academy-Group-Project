@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Welcome } from '../models/welcome.ts'
+import { Weather } from '../models/weather.ts'
 
 const serverURL = '/api/v1'
 

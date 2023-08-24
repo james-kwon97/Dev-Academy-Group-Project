@@ -1,9 +1,5 @@
-// export interface Welcome {
-//   statement: string
-// }
-
 export interface Weather {
-  city_name: string
+  city_name?: string
   temp: number
   feels_like: number
   humidity: number
@@ -15,5 +11,5 @@ export interface Weather {
   sunset: number
 }
 
-// celcius symbol °C
+// Celcius symbol °C
 // fahrenheit symbol °F
