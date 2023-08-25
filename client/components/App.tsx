@@ -56,7 +56,7 @@ function App() {
     const weatherData = await getWeather(searchText)
     console.log(weatherData)
     setCity({ ...weatherData, city_name: searchText })
-    setCocktail(cocktailTest)
+
     // const cocktail = getCocktail(weather.id)
     // getCocktail(id)...
 

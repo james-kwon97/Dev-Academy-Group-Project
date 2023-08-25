@@ -133,12 +133,7 @@ body {
   left: 15%;
   width: 70%;
   height: 70%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Semi-transparent background for better readability */
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 10px;
 }

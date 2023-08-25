@@ -5,6 +5,7 @@ import CocktailMethod from './CocktailMethod.tsx'
 export default function Cocktail({ cocktail }) {
   const [methodView, setMethodView] = useState(false)
   const drinkData = cocktail.drinks[0]
+
   const handleClick = () => {
     setMethodView(true)
   }
