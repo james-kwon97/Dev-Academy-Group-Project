@@ -6,6 +6,7 @@ const serverURL = '/api/v1/cloudy'
 
 // *** EXAMPLE ***
 export async function getWeather(city: string): Promise<Weather> {
+  console.log('made it to get weather')
   const response = await request.get(`${serverURL}/weather/${city}`)
   return response.body
 }
@@ -19,12 +20,9 @@ export async function getWeather(city: string): Promise<Weather> {
 //   return response.body
 // }
 
-// // link to cocktail depending on the city?
-
 export async function fetchCocktailData(cocktailId: number): Promise<Cocktail> {
-  const response = await request.get(
-    `www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`
-  )
+  const response = await request.get(`${serverURL}/cocktail/${cocktailId}`)
+
   return response.body
 }
 

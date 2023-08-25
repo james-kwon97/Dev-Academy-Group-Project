@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getWeather } from '../apiClient.ts'
+import { getWeather, fetchCocktailData } from '../apiClient.ts'
 import SearchBar from './SearchBar.tsx'
 import Weather from './Weather.tsx'
 import Navbar from './Navbar.tsx'
@@ -48,7 +48,7 @@ function App() {
 
   const [city, setCity] = useState<WeatherType>(emptyCity)
   const [searchText, setSearchText] = useState('')
-  // const [cocktail, setCocktail] = useState('')
+  const [cocktail, setCocktail] = useState(null)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -57,6 +57,34 @@ function App() {
     setCity({ ...weatherData, city_name: searchText })
     // const cocktail = getCocktail(weather.id)
     // getCocktail(id)...
+
+    let cocktailId
+    const temp = weatherData.temp
+
+    switch (true) {
+      case temp > -5 && temp <= 5:
+        cocktailId = Math.floor(Math.random() * 5) + 11000
+        break
+      case temp > 5 && temp <= 10:
+        cocktailId = Math.floor(Math.random() * 5) + 11005
+        break
+      case temp > 10 && temp <= 15:
+        cocktailId = Math.floor(Math.random() * 5) + 11010
+        break
+      case temp > 15 && temp <= 20:
+        cocktailId = Math.floor(Math.random() * 5) + 11015
+        break
+      case temp > 20 && temp <= 25:
+        cocktailId = Math.floor(Math.random() * 5) + 11020
+        break
+      case temp > 25:
+        cocktailId = Math.floor(Math.random() * 5) + 11025
+        break
+    }
+    console.log(cocktailId)
+    const cocktailData = await fetchCocktailData(cocktailId)
+    console.log(cocktailData)
+    setCocktail(cocktailData)
   }
 
   return (
@@ -79,6 +107,3 @@ function App() {
 }
 
 export default App
-
-// celcius symbol °C
-// fahrenheit symbol °F

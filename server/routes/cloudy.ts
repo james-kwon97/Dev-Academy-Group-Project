@@ -36,4 +36,22 @@ router.get(`/weather/:city`, async (req, res) => {
   }
 })
 
+// GET /api/v1/cloudy/cocktail
+router.get('/cocktail/:cocktailId', async (req, res) => {
+  const cocktailId = req.params.cocktailId
+
+  try {
+    const response = await request.get(
+      `www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`
+    )
+    res.json(response.body)
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(500).send((err as Error).message)
+    } else {
+      res.status(500).send('Something went wrong')
+    }
+  }
+})
+
 export default router
