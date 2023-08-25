@@ -5,7 +5,7 @@ import { getWeather } from '../apiClient.ts'
 export default function Weather({ city }) {
   return (
     <div className="weather-container">
-      <h2>Name: {city.city_name}</h2>
+      <h2>{city.city_name}</h2>
       <ul className="nice-list">
         <li>Temperature: {city.temp}°C</li>
         <li>Feels Like: {city.feels_like}°C</li>

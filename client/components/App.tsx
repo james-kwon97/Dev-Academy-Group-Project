@@ -3,6 +3,7 @@ import { getWeather, fetchCocktailData } from '../apiClient.ts'
 import SearchBar from './SearchBar.tsx'
 import Weather from './Weather.tsx'
 import Navbar from './Navbar.tsx'
+import { CocktailType } from '../../models/cocktail.ts'
 
 import { Weather as WeatherType } from '../../models/weather.ts'
 import Cocktail from './Cocktail.tsx'
@@ -48,13 +49,14 @@ function App() {
 
   const [city, setCity] = useState<WeatherType>(emptyCity)
   const [searchText, setSearchText] = useState('')
-  const [cocktail, setCocktail] = useState(null)
+  const [cocktail, setCocktail] = useState<CocktailType | null>(null)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const weatherData = await getWeather(searchText)
     console.log(weatherData)
     setCity({ ...weatherData, city_name: searchText })
+    setCocktail(cocktailTest)
     // const cocktail = getCocktail(weather.id)
     // getCocktail(id)...
 
@@ -97,9 +99,8 @@ function App() {
           handleSubmit={handleSubmit}
         />
         <div className="result-container">
-          <Weather city={city} />
-          <Cocktail />
-          {/* <Cocktail cocktail={cocktail} /> */}
+          {city != emptyCity ? <Weather city={city} /> : ''}
+          {cocktail != null ? <Cocktail cocktail={cocktail} /> : ''}
         </div>
       </div>
     </>
