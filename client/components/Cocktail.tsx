@@ -7,3 +7,23 @@
 //     </>
 //   )
 // }
+
+import { Cocktail as CocktailType } from '../../models/cocktail.ts'
+import { useEffect, useState } from 'react'
+import { getCocktail } from '../apiClient.ts'
+
+export default function Cocktail({ cocktail }) {
+  return (
+    <>
+      <h2>Drink Name: {cocktail.strDrink}</h2>
+      <ul>
+        <li>Alcoholic?: {cocktail.strAlcoholic}</li>
+        <li>Cocktail instructions: {cocktail.strInstructions}</li>
+        <img src="" alt="" />
+        <button>View Method</button>
+      </ul>
+    </>
+  )
+}
+
+// Cityname, temp, feels_like, humidity, min_temp, max_temp, wind_speed, wind_degrees, sunrise, sunset
