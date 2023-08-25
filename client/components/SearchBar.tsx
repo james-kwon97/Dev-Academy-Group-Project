@@ -19,7 +19,7 @@ export default function CitySearch({
   // }
 
   return (
-    <>
+    <div className="search">
       <form
         onSubmit={(e) => {
           handleSubmit(e)
@@ -27,14 +27,15 @@ export default function CitySearch({
       >
         <label htmlFor="searchText">Search for a City: </label>
         <input
+          className="search-input"
           type="text"
           name="searchText"
           id="searchText"
           value={searchText}
           onChange={handleChange}
         />
-        <button>Submit</button>
+        <button className="search-button">Submit</button>
       </form>
-    </>
+    </div>
   )
 }
