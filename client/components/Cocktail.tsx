@@ -25,5 +25,3 @@ export default function Cocktail({ cocktail }) {
     </>
   )
 }
-
-// Cityname, temp, feels_like, humidity, min_temp, max_temp, wind_speed, wind_degrees, sunrise, sunset
