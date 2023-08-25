@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { getWeather } from '../apiClient.ts'
 import SearchBar from './SearchBar.tsx'
 import Weather from './Weather.tsx'
-// import Navbar from './Navbar.tsx'
-// import Cocktail from './Cocktail.tsx'
+import Navbar from './Navbar.tsx'
 
 import { Weather as WeatherType } from '../../models/weather.ts'
+import Cocktail from './Cocktail.tsx'
 
 // import Weather from './Weather.tsx'
 const dumbyCity = {
@@ -61,15 +61,19 @@ function App() {
 
   return (
     <>
-      <h1>Cloudy with a chance of cocktails🍸🍹</h1>
-      {/* <Navbar /> */}
-      <SearchBar
-        searchText={searchText}
-        setSearchText={setSearchText}
-        handleSubmit={handleSubmit}
-      />
-      {/* <Cocktail cocktail={cocktail} /> */}
-      <Weather city={city} />
+      <Navbar />
+      <div className="body">
+        <SearchBar
+          searchText={searchText}
+          setSearchText={setSearchText}
+          handleSubmit={handleSubmit}
+        />
+        <div className="result-container">
+          <Weather city={city} />
+          <Cocktail />
+          {/* <Cocktail cocktail={cocktail} /> */}
+        </div>
+      </div>
     </>
   )
 }
