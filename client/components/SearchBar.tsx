@@ -1,11 +1,14 @@
-import { useState } from 'react'
-import getWeather from '../apiClient.ts'
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  searchText: string
+  setSearchText: (e: string) => void
+}
 
 export default function CitySearch({
   handleSubmit,
   searchText,
   setSearchText,
-}) {
+}: Props) {
   // const [searchText, setSearchText] = useState('')
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
