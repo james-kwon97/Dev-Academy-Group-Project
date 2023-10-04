@@ -1,4 +1,9 @@
-export default function CocktailMethod({ drink, handleClose }) {
+interface Props {
+  drink: any
+  handleClose: () => void
+}
+
+export default function CocktailMethod({ drink, handleClose }: Props) {
   return (
     <>
       <div className="method">

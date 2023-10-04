@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { getWeather, fetchCocktailData } from '../apiClient.ts'
 import SearchBar from './SearchBar.tsx'
 import Weather from './Weather.tsx'
@@ -9,17 +9,17 @@ import { Weather as WeatherType } from '../../models/weather.ts'
 import Cocktail from './Cocktail.tsx'
 
 // import Weather from './Weather.tsx'
-const dumbyCity = {
-  temp: 24,
-  feels_like: 22,
-  humidity: 9,
-  min_temp: 12,
-  max_temp: 27,
-  wind_speed: 100,
-  wind_degrees: 12,
-  sunrise: 23,
-  sunset: 33,
-}
+// const dumbyCity = {
+//   temp: 24,
+//   feels_like: 22,
+//   humidity: 9,
+//   min_temp: 12,
+//   max_temp: 27,
+//   wind_speed: 100,
+//   wind_degrees: 12,
+//   sunrise: 23,
+//   sunset: 33,
+// }
 
 const emptyCity = {
   city_name: '',
@@ -35,18 +35,6 @@ const emptyCity = {
 }
 
 function App() {
-  // const [welcomeStatement, setWelcomeStatement] = useState('')
-
-  // useEffect(() => {
-  //   getWelcome()
-  //     .then((res) => {
-  //       setWelcomeStatement(res.statement)
-  //     })
-  //     .catch((err) => {
-  //       console.error(err.message)
-  //     })
-  // })
-
   const [city, setCity] = useState<WeatherType>(emptyCity)
   const [searchText, setSearchText] = useState('')
   const [cocktail, setCocktail] = useState<CocktailType | null>(null)
@@ -54,13 +42,13 @@ function App() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const weatherData = await getWeather(searchText)
-    console.log(weatherData)
     setCity({ ...weatherData, city_name: searchText })
 
     // const cocktail = getCocktail(weather.id)
     // getCocktail(id)...
 
-    let cocktailId
+    let cocktailId: number | undefined = undefined // Initialize with a default value
+
     const temp = weatherData.temp
 
     switch (true) {
@@ -83,10 +71,12 @@ function App() {
         cocktailId = Math.floor(Math.random() * 5) + 11025
         break
     }
-    console.log(cocktailId)
-    const cocktailData = await fetchCocktailData(cocktailId)
-    console.log(cocktailData)
-    setCocktail(cocktailData)
+
+    if (cocktailId !== undefined) {
+      const cocktailData = await fetchCocktailData(cocktailId)
+      console.log(cocktailData)
+      setCocktail(cocktailData)
+    }
   }
 
   return (

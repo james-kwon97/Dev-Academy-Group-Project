@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import CocktailMethod from './CocktailMethod.tsx'
 
-export default function Cocktail({ cocktail }) {
+export default function Cocktail({ cocktail }: any) {
   const [methodView, setMethodView] = useState(false)
   const drinkData = cocktail.drinks[0]
 
